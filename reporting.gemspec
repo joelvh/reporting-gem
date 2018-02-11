@@ -32,4 +32,36 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+
+  # Export
+  spec.add_development_dependency 'batch-loader'
+
+  # ETL
+  spec.add_development_dependency 'kiba' # ETL pipeline framework
+
+  # Formats
+  spec.add_development_dependency 'saxlsx' # XLSX
+  spec.add_development_dependency 'xport' # XLSX, CSV
+  spec.add_development_dependency 'axlsx'
+  spec.add_development_dependency 'roo' # Spreadsheet interface
+  spec.add_development_dependency 'spreadsheet' # XLSX
+  spec.add_development_dependency 'rubyXL' # read/write/modify .xlsx and .xlsm files
+  spec.add_development_dependency 'google-spreadsheet-ruby' # Google sheets
+  spec.add_development_dependency 'remote_table' # Open local/remote XLSX, XLS, ODS, CSV, TSV/Google Docs
+
+  # Frameworks & Web
+  spec.add_development_dependency 'axlsx_rails'
+  spec.add_development_dependency 'datashift' # Import/Export XLSX/CSV/Paperclip
+  spec.add_development_dependency 'reports_kit' # Rails Reporting UI with charts, etc
+  spec.add_development_dependency 'ruport' # Easily reformat data to various outputs (e.g. PDF, HTML, etc)
+  spec.add_development_dependency 'thinreports-generator' # Report generator
+  spec.add_development_dependency 'compendium' # Rails reporting framework
+  spec.add_development_dependency 'active_reporting' # ActiveRecord w/ ROLAP DSL
+
+  # Detectors
+  spec.add_development_dependency 'bugspots' # code bug prediction hotspot heuristic (based on git history)
+  spec.add_development_dependency 'linguist' # detect programming languages in repo
+  spec.add_development_dependency 'charlock_holmes' # character encoding detection
+  spec.add_development_dependency 'swot' # Determine if email address domains belong to academic institutions
+  spec.add_development_dependency 'rubrowser' # a ruby code dependency graph interactive visualizer
 end
