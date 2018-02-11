@@ -6,8 +6,8 @@ module Reporting
       module Destination
         include Steps
 
-        def destination(worker = nil, *args, &block)
-          add_step :destination, worker, args, &block
+        def destination(worker = nil, **options, &block)
+          add_step :destination, options, worker, &block
         end
       end
     end

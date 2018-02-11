@@ -6,8 +6,8 @@ module Reporting
       module Finalize
         include Steps
 
-        def finalize(worker = nil, *args, &block)
-          add_step :finalize, worker, args, &block
+        def finalize(worker = nil, **options, &block)
+          add_step :finalize, options, worker, &block
         end
       end
     end

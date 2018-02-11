@@ -1,8 +1,7 @@
 module Reporting
   class Step
-    def initialize(args, pipeline, &block)
-      @args     = args
-      @options  = args.last.is_a?(Hash) ? args.pop : {}
+    def initialize(options, pipeline, &block)
+      @options  = options
       @pipeline = pipeline
       @block    = block
     end

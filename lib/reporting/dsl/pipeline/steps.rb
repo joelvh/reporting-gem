@@ -4,8 +4,8 @@ module Reporting
   module DSL
     module Pipeline
       module Steps
-        def add_step(step, worker, args, &block)
-          (@steps ||= {})[step] ||= [worker || Reporting::Step, args, block]
+        def add_step(step, options, worker = nil, &block)
+          (@steps ||= {})[step] ||= [options, worker || Reporting::Step, block]
 
           self
         end

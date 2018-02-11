@@ -20,7 +20,7 @@ module Reporting
           # - Block formats the keys
           # - No block means we "slice" the hash (if matchers are specified)
           def transform_keys(*matchers, &block)
-            transform Reporting::Transforms::TransformKeys, *matchers, &block
+            transform Reporting::Transforms::TransformKeys, matchers: matchers, &block
           end
         end
       end

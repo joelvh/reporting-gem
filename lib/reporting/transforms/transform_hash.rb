@@ -24,9 +24,10 @@ module Reporting
       end
 
       def match?(value)
-        return true if @args.empty?
+        matchers = Array(@options[:matchers])
+        return true if matchers.empty?
 
-        @matcher ||= Matcher.new(@args)
+        @matcher ||= Matcher.new(matchers)
         @matcher.match?(value)
       end
     end
