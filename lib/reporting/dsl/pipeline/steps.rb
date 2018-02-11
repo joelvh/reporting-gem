@@ -1,9 +1,11 @@
+require_relative '../../step'
+
 module Reporting
   module DSL
     module Pipeline
       module Steps
         def add_step(step, worker, args, &block)
-          (@steps ||= {})[step] ||= [worker, args, block]
+          (@steps ||= {})[step] ||= [worker || Reporting::Step, args, block]
 
           self
         end

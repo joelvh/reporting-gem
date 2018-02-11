@@ -2,7 +2,7 @@ module Reporting
   module Transforms
     class TransformKeys < TransformHash
       def transform_key(key, value)
-        @block ? @block.call(key) : key
+        apply_block(key)
       end
 
       def slice?(key, value)
