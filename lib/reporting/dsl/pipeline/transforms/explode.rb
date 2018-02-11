@@ -1,3 +1,5 @@
+require_relative '../../../transforms/explode_enumerable'
+
 module Reporting
   module DSL
     module Pipeline

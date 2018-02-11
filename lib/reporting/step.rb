@@ -1,17 +1,13 @@
 module Reporting
   class Step
-    def initialize(*args, **options, &block)
+    def initialize(*args, &block)
       @args    = args
-      @options = options
       @block   = block
     end
 
-    def call(*args, **options, &block)
+    def call(row, context)
       raise "Not implemented"
     end
-
-    # Kiba compatibility
-    alias_method :process, :call
 
   protected
 

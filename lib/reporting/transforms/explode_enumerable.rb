@@ -4,7 +4,7 @@ require_relative '../matcher'
 module Reporting
   module Transforms
     class ExplodeEnumerable < Transform
-      def call(rows)
+      def call(rows, context)
         rows = Array(rows)
         rows = rows.flatten if @options[:flatten]
         

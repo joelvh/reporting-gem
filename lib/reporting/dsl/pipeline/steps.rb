@@ -1,5 +1,3 @@
-require_relative 'steps'
-
 module Reporting
   module DSL
     module Pipeline

@@ -1,3 +1,5 @@
+require_relative '../../../transforms/transform_values'
+
 module Reporting
   module DSL
     module Pipeline

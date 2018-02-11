@@ -4,7 +4,7 @@ require_relative '../matcher'
 module Reporting
   module Transforms
     class TransformHash < Transform
-      def call(row)
+      def call(row, context)
         row.each_with_object({}) do |(key, value), result|
           next if slice?(key, value)
           result[transform_key(key)] = transform_value(value)
