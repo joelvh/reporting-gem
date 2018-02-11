@@ -6,7 +6,7 @@ module Reporting
       end
       
       def each(&block)
-        @block.call(&block)
+        @block.call.each(&block)
       end
     end
   end
