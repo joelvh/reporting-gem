@@ -8,9 +8,20 @@ module Reporting
   class Job
     include Pipeline
 
-    def self.run(&block)
-      new(@pipeline.dup, &block).run
+    # Entry point to run a job.
+    # Initiates a default job class if
+    # called on Job and not subclassed.
+    def self.perform(context = {}, &block)
+      # Use a default job class if this class
+      # is not a subclass of Job
+      klass = ::Reporting.default_job_class if self == Job
+      klass ||= self
+
+      # Grab @pipeline from class and copy it to instance
+      klass.new(@pipeline.dup, &block).perform(context)
     end
+
+    # private_class_method :new
 
     def initialize(pipeline, &block)
       @pipeline = pipeline
@@ -19,32 +30,8 @@ module Reporting
       instance_eval(&block)
     end
 
-    def run(context = {})
-      pipeline = self
-
-      job = Kiba.parse do
-        pipeline.steps_for(:setup).each do |worker, args, block|
-          pre_process Kiba::WorkerProxy.new(worker, context, pipeline, &block), *args
-        end
-
-        pipeline.steps_for(:source).each do |worker, args, block|
-          source Kiba::WorkerProxy.new(worker, context, pipeline, Kiba::CollectionProxy, &block), *args
-        end
-
-        pipeline.steps_for(:transform).each do |worker, args, block|
-          transform Kiba::WorkerProxy.new(worker, context, pipeline, Kiba::TransformProxy, &block), *args
-        end
-
-        pipeline.steps_for(:destination).each do |worker, args, block|
-          destination Kiba::WorkerProxy.new(worker, context, pipeline, Kiba::CollectionProxy, &block), *args
-        end
-
-        pipeline.steps_for(:finalize).each do |worker, args, block|
-          post_process Kiba::WorkerProxy.new(worker, context, pipeline, &block), *args
-        end
-      end
-
-      Kiba.run(job)
+    def perform(context = {})
+      raise "Instance method #{self.class}#perform must be implemented"
     end
   end
 end

@@ -1,12 +1,15 @@
 module Reporting
   module Kiba
     class WorkerProxy
-      def initialize(worker, context, pipeline, proxy = Proc, &block)
+      def initialize(worker, context, pipeline, proxy = nil, &block)
         @worker   = worker
         @context  = context
         @pipeline = pipeline
-        @proxy    = proxy
-        @block    = block
+        # Kiba calls `call` for processors
+        # and `each` for sources/destinations
+        # and `process` for transforms
+        @proxy    = proxy || Proc
+        @block    = ProcBinder.proxy(@pipeline, &block)
       end
 
       # Instance method to simulate class
