@@ -15,7 +15,7 @@ module Reporting
       # Instance method to simulate class
       def new(*constructor_args)
         @proxy.new do |*call_args|
-          @worker.new(constructor_args, @pipeline, &@block).call(*call_args, @context)
+          @worker.new(constructor_args, @pipeline, &@block).call(call_args, @context)
         end
       end
     end

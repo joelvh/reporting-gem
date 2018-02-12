@@ -9,7 +9,7 @@ module Reporting
     module Kiba
       class Job
         include Reporting::Job
-        
+
         def perform(context = {})
           # Prepare Kiba pipeline args before switching
           # binding context in `Kiba.parse`
@@ -37,8 +37,8 @@ module Reporting
         end
 
         def build_args(step, proxy_class = nil)
-          steps_for(step).map do |worker, args, block|
-            [ Kiba::WorkerProxy.new(worker, context, self, proxy_class, &block), *args ]
+          steps_for(step).map do |options, worker, block|
+            [ Kiba::WorkerProxy.new(worker, context, self, proxy_class, &block), options ]
           end
         end
       end

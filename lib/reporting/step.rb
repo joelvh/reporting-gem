@@ -6,17 +6,16 @@ module Reporting
       @block    = block
     end
 
-    def call(row, context)
-      apply_block(row, context)
+    def call(args, context)
+      apply_block(args, context)
     end
 
   protected
 
-    def apply_block(*args, &block)
-      return args.first unless @block
+    def apply_block(args, context)
+      return args[0] unless block?
 
-      body = @block
-      @pipeline.instance_eval { body.call(*args, &block) }
+      @pipeline.instance_exec(args, context, &@block)
     end
 
     def block?
