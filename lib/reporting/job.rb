@@ -22,7 +22,7 @@ module Reporting
       @pipeline = pipeline
 
       # Configure pipeline further on instance
-      instance_eval(&block)
+      instance_exec(self, &block)
     end
 
     def perform(context = {})
