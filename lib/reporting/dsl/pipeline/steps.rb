@@ -5,13 +5,13 @@ module Reporting
     module Pipeline
       module Steps
         def add_step(step, options, worker = nil, &block)
-          (@steps ||= {})[step] ||= [options, worker || Reporting::Step, block]
+          (@pipeline ||= {})[step] ||= [options, worker || Reporting::Step, block]
 
           self
         end
 
         def steps_for(step)
-          (@steps ||= {})[step] ||= []
+          (@pipeline ||= {})[step] ||= []
         end
       end
     end
