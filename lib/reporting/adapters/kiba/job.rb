@@ -7,7 +7,9 @@ require_relative 'kiba/transform_proxy'
 module Reporting
   module Adapters
     module Kiba
-      class Job < Reporting::Job
+      class Job
+        include Reporting::Job
+        
         def perform(context = {})
           # Prepare Kiba pipeline args before switching
           # binding context in `Kiba.parse`

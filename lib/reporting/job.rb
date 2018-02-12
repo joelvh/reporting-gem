@@ -5,20 +5,15 @@ require_relative 'kiba/collection_proxy'
 require_relative 'kiba/transform_proxy'
 
 module Reporting
-  class Job
+  module Job
     include Pipeline
 
     # Entry point to run a job.
-    # Initiates a default job class if
-    # called on Job and not subclassed.
     def self.perform(context = {}, &block)
-      # Use a default job class if this class
-      # is not a subclass of Job
-      klass = ::Reporting.default_job_class if self == Job
-      klass ||= self
+      raise "Include #{self.name} in a class" unless Class === self
 
       # Grab @pipeline from class and copy it to instance
-      klass.new(@pipeline.dup, &block).perform(context)
+      new(@pipeline.dup, &block).perform(context)
     end
 
     # private_class_method :new
