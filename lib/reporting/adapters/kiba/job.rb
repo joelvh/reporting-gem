@@ -14,10 +14,10 @@ module Reporting
           # Prepare Kiba pipeline args before switching
           # binding context in `Kiba.parse`
           phases = {
-            pre_process:  build_args(:setup),
-            source:       build_args(:source,      Kiba::CollectionProxy),
-            transform:    build_args(:transform,   Kiba::TransformProxy),
-            destination:  build_args(:destination, Kiba::CollectionProxy),
+            pre_process:  build_args(:setup,       context),
+            source:       build_args(:source,      context, Kiba::CollectionProxy),
+            transform:    build_args(:transform,   context, Kiba::TransformProxy),
+            destination:  build_args(:destination, context, Kiba::CollectionProxy),
             post_process: build_args(:finalize)
           }
 
@@ -32,13 +32,22 @@ module Reporting
 
       protected
 
-        def build(&block)
+        def build
           Kiba.parse{ yield self }
         end
 
-        def build_args(step, proxy_class = nil)
-          steps_for(step).map do |options, worker, block|
-            [ Kiba::WorkerProxy.new(worker, context, self, proxy_class, &block), options ]
+        def build_args(step, context, proxy_class = nil)
+          steps_for(step).map do |config|
+            [
+              Kiba::WorkerProxy.new(
+                config.fetch(:worker),
+                context,
+                self,
+                proxy_class,
+                &config.fetch(:block)
+              ),
+              config.fetch(:options)
+            ]
           end
         end
       end
