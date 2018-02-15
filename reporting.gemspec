@@ -54,7 +54,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'datashift' # Import/Export XLSX/CSV/Paperclip
   spec.add_development_dependency 'reports_kit' # Rails Reporting UI with charts, etc
   spec.add_development_dependency 'ruport' # Easily reformat data to various outputs (e.g. PDF, HTML, etc)
-  spec.add_development_dependency 'thinreports-generator' # Report generator
+  spec.add_development_dependency 'thinreports' # Report generator
   spec.add_development_dependency 'compendium' # Rails reporting framework
   spec.add_development_dependency 'active_reporting' # ActiveRecord w/ ROLAP DSL
 
