@@ -39,6 +39,11 @@ Gem::Specification.new do |spec|
   # ETL
   spec.add_development_dependency 'kiba' # ETL pipeline framework
 
+  # Transformers
+  spec.add_development_dependency 'transproc' # Transform Ruby objects in functional style (basis for ROM)
+  spec.add_development_dependency 'hm' # Idomatic Ruby hash transformations
+  spec.add_development_dependency 'daru' # for storage, analysis, manipulation and visualization of data
+
   # Formats
   spec.add_development_dependency 'saxlsx' # XLSX
   spec.add_development_dependency 'xport' # XLSX, CSV
