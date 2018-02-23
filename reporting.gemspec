@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
 
   # ETL
   spec.add_development_dependency 'kiba' # ETL pipeline framework
+  spec.add_development_dependency 'mapreduce' # Ruby distributed Map/Reduce using ZeroMQ
 
   # Transformers
   spec.add_development_dependency 'transproc' # Transform Ruby objects in functional style (basis for ROM)
