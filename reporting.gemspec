@@ -35,6 +35,20 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'rspec-kickstarter'
+
+  # Utilities
+  spec.add_dependency 'dry-core' # cache, class attributes, class builder, constants, deprecations, extensions
+  spec.add_dependency 'dry-equalizer' # add equality checks to value objects based on specific attributes
+  spec.add_dependency 'dry-events' # pub/sub
+  spec.add_dependency 'dry-inflector' # adds inflection helpers for pluralize/camelize/classify/etc
+  spec.add_dependency 'dry-initializer' # specify args/attributes and options with types/defaults to objects
+  spec.add_dependency 'dry-logic' # programmatically build predicates and operations (AND/OR boolean logic)
+  spec.add_dependency 'dry-matcher' # build success/failure case logic with handlers to react to success/fail
+  spec.add_dependency 'dry-monads' # "railway programming" using a result object for method success/failure
+  spec.add_dependency 'dry-struct' # define typed attributes for "frozen" data ojbects or value objects
+  spec.add_dependency 'dry-system'
+  spec.add_dependency 'dry-transaction' # execute operations step by step
 
   # Export
   spec.add_development_dependency 'batch-loader'
@@ -47,6 +61,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'transproc' # Transform Ruby objects in functional style (basis for ROM)
   spec.add_development_dependency 'hm' # Idomatic Ruby hash transformations
   spec.add_development_dependency 'daru' # for storage, analysis, manipulation and visualization of data
+  spec.add_development_dependency 'piperator' # Composable pipelines for Enumerators
 
   # Formats
   spec.add_development_dependency 'saxlsx' # XLSX

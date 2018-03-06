@@ -4,8 +4,8 @@ module Reporting
   module DSL
     module Pipeline
       module Steps
-        def add_step(step, name, options, worker = nil, &block)
-          (@steps ||= {})[step] ||= {
+        def add_step(type, name, options, worker = nil, &block)
+          (@steps ||= {})[type] ||= {
             name:    name,
             options: options,
             worker:  worker || Reporting::Step,
@@ -15,8 +15,8 @@ module Reporting
           self
         end
 
-        def steps_for(step)
-          (@steps ||= {})[step] ||= {}
+        def steps_for(type)
+          (@steps ||= {})[type] ||= {}
         end
       end
     end

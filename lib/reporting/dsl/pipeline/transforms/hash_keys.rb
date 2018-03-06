@@ -5,22 +5,22 @@ module Reporting
     module Pipeline
       module Transforms
         module HashKeys
-          def symbolize_keys(*specific_keys)
-            transform_keys(*specific_keys, &:to_sym)
+          def symbolize_keys(*specific_keys, **options)
+            transform_keys(*specific_keys, **options, &:to_sym)
           end
 
-          def stringify_keys(*specific_keys)
-            transform_keys(*specific_keys, &:to_s)
+          def stringify_keys(*specific_keys, **options)
+            transform_keys(*specific_keys, **options, &:to_s)
           end
 
-          def slice_keys(*specific_keys)
-            transform_keys(*specific_keys)
+          def slice_keys(*specific_keys, **options)
+            transform_keys(*specific_keys, **options)
           end
 
           # - Block formats the keys
           # - No block means we "slice" the hash (if matchers are specified)
-          def transform_keys(*matchers, &block)
-            transform Reporting::Transforms::TransformKeys, matchers: matchers, &block
+          def transform_keys(*matchers, **options, &block)
+            transform Reporting::Transforms::TransformKeys, matchers: matchers, **options, &block
           end
         end
       end

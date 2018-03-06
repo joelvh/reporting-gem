@@ -5,8 +5,8 @@ module Reporting
       class Store
         attr_reader :state
 
-        def initialize(reducer, initial_state = nil)
-          @reducer = reducer
+        def initialize(initial_state = nil, reducer: nil, &inline_reducer)
+          @reducer = inline_reducer || reducer
           @listeners = []
           @state = initial_state
           dispatch({})

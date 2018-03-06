@@ -6,8 +6,8 @@ module Reporting
       module Source
         include Steps
 
-        def source(worker = nil, **options, &block)
-          add_step :source, options, worker, &block
+        def source(worker = nil, name:, **options, &block)
+          add_step :source, name, options, worker, &block
         end
       end
     end

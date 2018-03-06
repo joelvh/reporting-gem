@@ -22,6 +22,17 @@ Or install it yourself as:
 
 TODO: Coming Soon
 
+## Resource
+
+### Redux
+
+[Redux](https://redux.js.org/) is a predictable state container for JavaScript apps. You can use Redux together with [React](https://reactjs.org/), or with any other view library.
+
+The design pattern is pretty simple. We have an implementation ([./lib/reporting/adapters/redux/](adapters/redux)) and there are several others to consider.
+
+* [Grand Central](https://github.com/clearwater-rb/grand_central) - GrandCentral is based on ideas similar to Redux. You have a central store that holds all your state. This state is updated via a handler block when you dispatch actions to the store.
+* [Understanding Redux store concepts by little Ruby reimplementation](https://medium.com/cloudaper/understanding-redux-store-concepts-by-little-ruby-reimplementation-d08bcc05dee8) - this inspired our implementation ([./lib/reporting/adapters/redux/](adapters/redux))
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

@@ -4,8 +4,8 @@ module Reporting
       class Action < Hash
         attr_reader :type
 
-        def initialize(type, default_object, &default_builder)
-          super(default_object, &default_builder)
+        def initialize(type, *default_object, &default_builder)
+          super(*default_object, &default_builder)
 
           @type = type
         end

@@ -7,20 +7,20 @@ module Reporting
         module Enumerables
           # Specify multiple methods to call
           # (e.g. :downcase, :to_sym, etc)
-          def map(*methods, &block)
-            transform do |row, context|
+          def map(*methods, **options, &block)
+            transform **options do |row, context|
               row = methods.reduce(row, :send)
               row = yield(row) if block_given?
               row
             end
           end
 
-          def flatten
-            map :flatten
+          def flatten(**options, &block)
+            map :flatten, **options, &block
           end
 
-          def explode
-            transform do |rows, context|
+          def explode(**options, &block)
+            transform **options do |rows, context|
               next rows unless rows.is_a?(Array)
               
               rows.each { |row| yield row }

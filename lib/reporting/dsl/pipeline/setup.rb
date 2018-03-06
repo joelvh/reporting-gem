@@ -6,8 +6,8 @@ module Reporting
       module Setup
         include Steps
 
-        def setup(worker = nil, **options, &block)
-          add_step :setup, options, worker, &block
+        def setup(worker = nil, name:, **options, &block)
+          add_step :setup, name, options, worker, &block
         end
       end
     end

@@ -6,8 +6,8 @@ module Reporting
       module Transform
         include Steps
 
-        def transform(worker = nil, **options, &block)
-          add_step :transform, options, worker, &block
+        def transform(worker = nil, name:, **options, &block)
+          add_step :transform, name, options, worker, &block
         end
       end
     end
